@@ -1,0 +1,16 @@
+version: 2.1
+
+workflows:
+
+  ip-ranges:
+    jobs:
+      - test-range
+
+jobs:
+  test-range:
+    circleci_ip_ranges: true
+    docker:
+      - image: cimg/base:stable
+    resource_class: small
+    steps:
+      - run: curl ENDPOINT_URL
