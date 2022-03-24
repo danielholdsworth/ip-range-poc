@@ -2,15 +2,24 @@ version: 2.1
 
 workflows:
 
-  ip-ranges:
+  ip-range-server:
     jobs:
-      - test-range
+      - test-range-server
+      - test-range-oup
 
 jobs:
-  test-range:
+  test-range-server:
     circleci_ip_ranges: true
     docker:
       - image: cimg/base:stable
     resource_class: small
     steps:
       - run: curl ${ENDPOINT_URL}
+
+  test-range-oup:
+    circleci_ip_ranges: true
+    docker:
+      - image: cimg/base:stable
+    resource_class: small
+    steps:
+      - run: curl ${OUP_URL}
