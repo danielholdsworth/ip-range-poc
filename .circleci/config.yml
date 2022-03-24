@@ -13,4 +13,4 @@ jobs:
       - image: cimg/base:stable
     resource_class: small
     steps:
-      - run: curl ENDPOINT_URL
+      - run: curl ${ENDPOINT_URL}
