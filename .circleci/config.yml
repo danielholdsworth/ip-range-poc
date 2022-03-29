@@ -8,17 +8,9 @@ workflows:
       - test-range-oup
       - test-server
       - test-oup
-      - ip-test
+
 
 jobs:
-  ip-test:
-    circleci_ip_ranges: true
-    docker:
-    - {image: 'circleci/node:12.14.1-browsers'}
-    resource_class: small
-    steps:
-      - run: curl -s http://whatismyip.akamai.com
-
   test-range-server:
     circleci_ip_ranges: true
     docker:
@@ -26,6 +18,7 @@ jobs:
     resource_class: small
     steps:
       - run: curl ${ENDPOINT_URL}
+      - run: curl -s http://whatismyip.akamai.com
 
   test-range-oup:
     circleci_ip_ranges: true
@@ -34,6 +27,7 @@ jobs:
     resource_class: small
     steps:
       - run: curl ${OUP_URL}
+      - run: curl -s http://whatismyip.akamai.com
 
   test-server:
     docker:
@@ -41,6 +35,7 @@ jobs:
     resource_class: small
     steps:
       - run: curl ${ENDPOINT_URL}
+      - run: curl -s http://whatismyip.akamai.com
 
   test-oup:
     docker:
@@ -48,3 +43,4 @@ jobs:
     resource_class: small
     steps:
       - run: curl ${OUP_URL}
+      - run: curl -s http://whatismyip.akamai.com
