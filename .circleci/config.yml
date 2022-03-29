@@ -17,8 +17,8 @@ jobs:
     - {image: 'circleci/node:12.14.1-browsers'}
     resource_class: small
     steps:
-      - run: curl ${ENDPOINT_URL}
       - run: curl -s http://whatismyip.akamai.com
+      - run: curl ${ENDPOINT_URL}
 
   test-range-oup:
     circleci_ip_ranges: true
@@ -26,8 +26,8 @@ jobs:
       - image: cimg/base:stable
     resource_class: small
     steps:
-      - run: curl ${OUP_URL}
       - run: curl -s http://whatismyip.akamai.com
+      - run: curl ${OUP_URL}
 
   test-server:
     docker:
@@ -42,5 +42,5 @@ jobs:
       - image: cimg/base:stable
     resource_class: small
     steps:
-      - run: curl ${OUP_URL}
       - run: curl -s http://whatismyip.akamai.com
+      - run: curl ${OUP_URL}
