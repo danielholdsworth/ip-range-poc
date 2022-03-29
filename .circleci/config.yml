@@ -34,8 +34,8 @@ jobs:
     - {image: 'circleci/node:12.14.1-browsers'}
     resource_class: small
     steps:
-      - run: curl ${ENDPOINT_URL}
       - run: curl -s http://whatismyip.akamai.com
+      - run: curl ${ENDPOINT_URL}
 
   test-oup:
     docker:
