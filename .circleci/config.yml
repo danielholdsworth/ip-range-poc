@@ -9,7 +9,7 @@ workflows:
 jobs:
   pull-test:
     docker:
-    - image: 'cimg/base:stable'
+    - image: 'bitnami/postgresql:13.5.0'
     resource_class: small
     steps:
       - run: echo "test"
