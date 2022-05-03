@@ -12,4 +12,4 @@ jobs:
     - {image: 'bitnami/postgresql:13.5.0'}
     resource_class: small
     steps:
-      - run: curl -s http://whatismyip.akamai.com
+      - run: echo "test"
