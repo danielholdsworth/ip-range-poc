@@ -2,44 +2,14 @@ version: 2.1
 
 workflows:
 
-  ip-range-server:
+  docker-pull-test:
     jobs:
-      - test-range-server
-      - test-server
-      - test-range-oup
-      - test-oup
+      - pull-test
 
 jobs:
-  test-range-server:
-    circleci_ip_ranges: true
+  pull-test:
     docker:
-    - {image: 'cimg/base:stable'}
+    - {image: 'bitnami/postgresql:13.5.0'}
     resource_class: small
     steps:
       - run: curl -s http://whatismyip.akamai.com
-      - run: curl ${ENDPOINT_URL}
-
-  test-server:
-    docker:
-    - {image: 'circleci/node:12.14.1-browsers'}
-    resource_class: small
-    steps:
-      - run: curl -s http://whatismyip.akamai.com
-      - run: curl ${ENDPOINT_URL}
-
-  test-range-oup:
-    circleci_ip_ranges: true
-    docker:
-      - image: cimg/base:stable
-    resource_class: small
-    steps:
-      - run: curl -s http://whatismyip.akamai.com
-      - run: curl ${OUP_URL}
-
-  test-oup:
-    docker:
-      - image: cimg/base:stable
-    resource_class: small
-    steps:
-      - run: curl -s http://whatismyip.akamai.com
-      - run: curl ${OUP_URL}
